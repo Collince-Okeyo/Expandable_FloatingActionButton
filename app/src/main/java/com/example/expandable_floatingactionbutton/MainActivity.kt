@@ -8,12 +8,13 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.Toast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var add: Button
-    lateinit var edit: Button
-    lateinit var image: Button
+    lateinit var add: FloatingActionButton
+    lateinit var edit: FloatingActionButton
+    lateinit var image: FloatingActionButton
     private  var clicked = false
 
 
@@ -33,19 +34,19 @@ class MainActivity : AppCompatActivity() {
         image = findViewById(R.id.fab_image)
 
 
-        add.setOnClickListener { View.OnClickListener {
+        add.setOnClickListener {
             onAddButtonClicked()
+        }
 
-        } }
-
-        edit.setOnClickListener { View.OnClickListener {
+        edit.setOnClickListener {
             Toast.makeText(this, "Edit button is clicked", Toast.LENGTH_SHORT).show()
 
-        } }
+        }
 
-        image.setOnClickListener { View.OnClickListener {
+        image.setOnClickListener {
             Toast.makeText(this, "Image button is clicked", Toast.LENGTH_SHORT).show()
-        } }
+
+        }
 
 
 
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity() {
     private fun onAddButtonClicked() {
         setVisibility(clicked)
         setAnimation(clicked)
+        setOnclicks(clicked)
         clicked = !clicked
     }
 
@@ -76,6 +78,16 @@ class MainActivity : AppCompatActivity() {
         }else{
             edit.visibility = View.INVISIBLE
             image.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun setOnclicks(clicked: Boolean){
+        if(!clicked){
+            edit.isClickable = true
+            image.isClickable = true
+        }else{
+            edit.isClickable = false
+            image.isClickable = false
         }
     }
 }
