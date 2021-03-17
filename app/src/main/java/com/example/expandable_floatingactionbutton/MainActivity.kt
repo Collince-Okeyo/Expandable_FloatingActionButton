@@ -1,21 +1,24 @@
 package com.example.expandable_floatingactionbutton
 
-import android.os.Build.VERSION_CODES.O
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Button
 import android.widget.Toast
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var add: FloatingActionButton
-    lateinit var edit: FloatingActionButton
-    lateinit var image: FloatingActionButton
-    private  var clicked = false
+    private lateinit var add: FloatingActionButton
+    private lateinit var edit: FloatingActionButton
+    private lateinit var image: FloatingActionButton
+    private lateinit var viewPager: ViewPager
+    private lateinit var tabLayout: TabLayout
+    private var clicked = false
 
 
 
@@ -29,6 +32,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        viewPager.adapter = PagerAdapter(supportFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
+
+
         add = findViewById(R.id.fab_add)
         edit = findViewById(R.id.fab_edit)
         image = findViewById(R.id.fab_image)
@@ -39,8 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         edit.setOnClickListener {
-            Toast.makeText(this, "Edit button is clicked", Toast.LENGTH_SHORT).show()
-
+            Snackbar.make(it, "Edit Button Clicked", Snackbar.LENGTH_LONG).setAction("Action", null).show()
         }
 
         image.setOnClickListener {
