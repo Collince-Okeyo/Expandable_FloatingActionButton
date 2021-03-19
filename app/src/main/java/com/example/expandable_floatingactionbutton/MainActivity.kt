@@ -33,10 +33,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        viewPager.adapter = PagerAdapter(supportFragmentManager)
-        tabLayout.setupWithViewPager(viewPager)
-
-
         add = findViewById(R.id.fab_add)
         edit = findViewById(R.id.fab_edit)
         image = findViewById(R.id.fab_image)
