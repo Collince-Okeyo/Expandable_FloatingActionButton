@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var add: FloatingActionButton
     private lateinit var edit: FloatingActionButton
     private lateinit var image: FloatingActionButton
-    private lateinit var viewPager: ViewPager
-    private lateinit var tabLayout: TabLayout
     private var clicked = false
 
 
